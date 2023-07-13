@@ -6,10 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.podgoretskaya.guide.dto.InformationAboutVehicleDTO;
 import ru.podgoretskaya.guide.service.InformationAboutVehicleService;
 
@@ -40,7 +37,8 @@ public class InformationAboutVehicleController {
         return new ResponseEntity<>(service.filter(model), HttpStatus.OK);
     }
 
-    @PostMapping("/guide")
+    //@PostMapping("/guide")
+    @GetMapping("/guide")
     @Operation(summary = "вся база")
     public ResponseEntity<List<InformationAboutVehicleDTO>> guide() {
         return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
