@@ -18,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @RestController
-//@RequestMapping("/desktop")
 @Tag(name = "справочник", description = "Методы разделены по типу операции")
 public class InformationAboutVehicleController {
     private final InformationAboutVehicleService service;
@@ -39,6 +38,12 @@ public class InformationAboutVehicleController {
     @Operation(summary = "фильтрация содержимого таблицы")
     public ResponseEntity<List<InformationAboutVehicleDTO>> filter(@RequestBody InformationAboutVehicleDTO model) {
         return new ResponseEntity<>(service.filter(model), HttpStatus.OK);
+    }
+
+    @PostMapping("/guide")
+    @Operation(summary = "вся база")
+    public ResponseEntity<List<InformationAboutVehicleDTO>> guide() {
+        return new ResponseEntity<>(service.findAll(), HttpStatus.OK);
     }
 
 }

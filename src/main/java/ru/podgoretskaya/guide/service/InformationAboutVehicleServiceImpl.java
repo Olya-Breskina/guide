@@ -58,4 +58,10 @@ public class InformationAboutVehicleServiceImpl implements InformationAboutVehic
         }
         return vehicleFilter.stream().map(mapper::toDto).collect(Collectors.toList());
     }
+
+    @Override
+    public List<InformationAboutVehicleDTO> findAll() {
+        List<InformationAboutVehicleEntity> all = repo.findAll();
+        return all.stream().map(mapper::toDto).collect(Collectors.toList());
+    }
 }

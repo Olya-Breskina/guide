@@ -11,12 +11,9 @@ import ru.podgoretskaya.guide.dto.enums.VehicleType;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name= "information_about_vehicle")
-@Inheritance(strategy= InheritanceType.JOINED)
+@Table(name = "information_about_vehicle")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class InformationAboutVehicleEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(name = "brand")
     String brand;
     @Column(name = "model")
@@ -31,4 +28,7 @@ public class InformationAboutVehicleEntity {
     String yearOfManufacture;
     @Column(name = "availability_of_trailer")
     boolean availabilityOfTrailer;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 }

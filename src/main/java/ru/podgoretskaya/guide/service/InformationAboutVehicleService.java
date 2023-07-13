@@ -10,4 +10,6 @@ public interface InformationAboutVehicleService {
     InformationAboutVehicleDTO edit(Long id, InformationAboutVehicleDTO dto);
 
     List<InformationAboutVehicleDTO> filter(InformationAboutVehicleDTO dto);
+
+    List<InformationAboutVehicleDTO> findAll();
 }
