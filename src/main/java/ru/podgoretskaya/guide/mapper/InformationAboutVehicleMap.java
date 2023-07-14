@@ -14,6 +14,7 @@ public class InformationAboutVehicleMap implements Mapper<InformationAboutVehicl
         entity.setModel(dto.getModel());
         entity.setCategory(dto.getCategory());
         entity.setStateNumber(dto.getStateNumber());
+        entity.setVehicleType(dto.getVehicleType());
         entity.setYearOfManufacture(dto.getYearOfManufacture());
         entity.setAvailabilityOfTrailer(dto.isAvailabilityOfTrailer());
         return entity;
@@ -26,6 +27,7 @@ public class InformationAboutVehicleMap implements Mapper<InformationAboutVehicl
         dto.setModel(entity.getModel());
         dto.setCategory(entity.getCategory());
         dto.setStateNumber(entity.getStateNumber());
+        dto.setVehicleType(entity.getVehicleType());
         dto.setYearOfManufacture(entity.getYearOfManufacture());
         dto.setAvailabilityOfTrailer(entity.isAvailabilityOfTrailer());
         return dto;
