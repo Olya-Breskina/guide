@@ -15,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @RestController
+@CrossOrigin(maxAge = 3600)
 @Tag(name = "справочник", description = "Методы разделены по типу операции")
 public class InformationAboutVehicleController {
     private final InformationAboutVehicleService service;
@@ -37,7 +38,6 @@ public class InformationAboutVehicleController {
         return new ResponseEntity<>(service.filter(model), HttpStatus.OK);
     }
 
-    //@PostMapping("/guide")
     @GetMapping("/guide")
     @Operation(summary = "вся база")
     public ResponseEntity<List<InformationAboutVehicleDTO>> guide() {
