@@ -23,8 +23,13 @@ public class InformationAboutVehicleServiceImpl implements InformationAboutVehic
     @Override
     public Long saveInDB(InformationAboutVehicleDTO dto) {
         log.info("\n>>> сохраниение  данных " + dto.toString() + ">>>\n");
-        InformationAboutVehicleEntity save = repo.save(mapper.toEntity(dto));
-        return save.getId();
+        try {
+            InformationAboutVehicleEntity save = repo.save(mapper.toEntity(dto));
+            return save.getId();
+        }catch (Exception e){
+            return 0l;
+        }
+
     }
 
     @Override
@@ -40,23 +45,23 @@ public class InformationAboutVehicleServiceImpl implements InformationAboutVehic
     @Override
     public List<InformationAboutVehicleDTO> filter(InformationAboutVehicleDTO dto) {
         log.info("\n>>> фильтрация по:  " + dto.toString() + ">>>\n");
-        List<InformationAboutVehicleEntity> vehicleFilter = new ArrayList<>();
-        if (dto.getBrand() != null) {
-            vehicleFilter = repo.findAllVehicleByBrand(dto.getBrand());
-        } else if (dto.getModel() != null) {
-            vehicleFilter = repo.findAllByModel(dto.getModel());
-        }
-        else if(dto.getCategory()!=null){
-            vehicleFilter = repo.findAllByCategory(dto.getCategory());
-        }
-        else if (dto.getStateNumber()!=null){
-            vehicleFilter = repo.findAllByStateNumber(dto.getStateNumber());
-        }
-        else if(dto.getYearOfManufacture()!=null)
-        {
-            vehicleFilter = repo.findAllByYearOfManufacture(dto.getYearOfManufacture());
-        }
-        return vehicleFilter.stream().map(mapper::toDto).collect(Collectors.toList());
+            List<InformationAboutVehicleEntity> vehicleFilter = new ArrayList<>();
+            if (dto.getBrand() != null) {
+                vehicleFilter = repo.findAllVehicleByBrand(dto.getBrand());
+            } else if (dto.getModel() != null) {
+                vehicleFilter = repo.findAllByModel(dto.getModel());
+            }
+            else if(dto.getCategory()!=null){
+                vehicleFilter = repo.findAllByCategory(dto.getCategory());
+            }
+            else if (dto.getStateNumber()!=null){
+                vehicleFilter = repo.findAllByStateNumber(dto.getStateNumber());
+            }
+            else if(dto.getYearOfManufacture()!=null)
+            {
+                vehicleFilter = repo.findAllByYearOfManufacture(dto.getYearOfManufacture());
+            }
+            return vehicleFilter.stream().map(mapper::toDto).collect(Collectors.toList());
     }
 
     @Override

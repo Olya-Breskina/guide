@@ -11,3 +11,4 @@ public class GuideApplication {
 	}
 
 }
+// сайл https://informationaboutvehicl.netlify.app/
